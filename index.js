@@ -25,6 +25,7 @@ $(document).ready(function () {
 
   let currentSlide = 0;
   let currentThumbnailSlide = 0;
+  
 
   initialize();
 
@@ -150,7 +151,6 @@ $(document).ready(function () {
     } else if (index >= thumbnailSlider.children().length) {
       index = 0;
     }
-
     currentThumbnailSlide = index;
 
     let transformValue = -index * thumbnailSlideWidth;
@@ -160,20 +160,18 @@ $(document).ready(function () {
     thumbnailSlider.css('transform', `translateX(${transformValue}px)`);
   }
 
-  function updateSlides() {
-    showSlide(currentSlide);
-    showThumbnailSlide(currentThumbnailSlide + 1);
-    toggleActiveThumbClass(currentThumbnailSlide);
-  }
-
-  function nextSlide() {
+    function nextSlide() {
     currentSlide++;
-    updateSlides();
+    showSlide(currentSlide);
+    showThumbnailSlide(currentSlide);
+    toggleActiveThumbClass(currentSlide);
   }
 
   function prevSlide() {
     currentSlide--;
-    updateSlides();
+    showSlide(currentSlide);
+    showThumbnailSlide(currentSlide);
+    toggleActiveThumbClass(currentSlide);
   }
 
   function goToSlide(index) {
@@ -190,12 +188,20 @@ $(document).ready(function () {
 
   function nextThumbnailSlide() {
     currentThumbnailSlide++;
+    currentSlide++;
+    showSlide(currentSlide);
     showThumbnailSlide(currentThumbnailSlide);
+    toggleActiveThumbClass(currentThumbnailSlide);
+    
   }
 
   function prevThumbnailSlide() {
     currentThumbnailSlide--;
+    currentSlide--;
+    showSlide(currentSlide);
     showThumbnailSlide(currentThumbnailSlide);
+    toggleActiveThumbClass(currentThumbnailSlide);
+    
   }
 
   function attachHoverHandlers(selector) {
@@ -210,7 +216,7 @@ $(document).ready(function () {
   }
 
   function attachControlBtnHandlers(selector, nextHandler, prevHandler) {
-    $(`${selector}.next`).on('click', nextHandler);
-    $(`${selector}.prev`).on('click', prevHandler);
+    $(`${selector}.next`).off('click').on('click', nextHandler);
+  $(`${selector}.prev`).off('click').on('click', prevHandler);
   }
 });
