@@ -93,7 +93,6 @@ h1 {
   width: 100%;
   height: 100%;
   background-color: rgba(245, 237, 237, 0.55);
-  /* z-index: 2; */
 }
 
 .thumbnails-controls {
@@ -114,10 +113,12 @@ h1 {
   background-color: rgb(60, 57, 57);
   color: white;
   border: none;
+  transition: all 0.5s ease-in-out;
 }
 
 .thumbnail-control-btn:hover {
-  color: rgb(218, 225, 18);
+  background-color: rgb(218, 225, 18);
+  color: rgb(60, 57, 57);
 }
 
 .thumb-container {
