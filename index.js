@@ -23,77 +23,107 @@ $(document).ready(function () {
     ],
   };
 
-  const titleElement = $('<h1>').text(dataObject.title);
- let sliderContainer = $('<div>').attr('id', 'slider-container');
-  let slider = $('<div>').addClass('slider');
-
-  for (let i = 0; i < dataObject.images.length; i++) {
-    let slide = $('<div>').addClass('slide');
-    const imgSrc = 'images/' + dataObject.images[i];
-    const imgElement = $('<img>').attr({
-      src: imgSrc,
-      alt: 'Slide ' + (i + 1),
-    });
-    slide.append(imgElement);
-    slider.append(slide);
-  }
-
-  const sliderControls = $('<div>').addClass('slider-controls');
-  const prevBtn = $('<button>')
-    .addClass('control-btn prev')
-    .html('<i class="fa-solid fa-square-caret-left"></i>');
-  const nextBtn = $('<button>')
-    .addClass('control-btn next')
-    .html('<i class="fa-solid fa-square-caret-right"></i>');
-  sliderControls.append(prevBtn, nextBtn);
- 
-  const thumbContainer = $('<div>').addClass('thumb-container');
-  const thumbControls = $('<div>').addClass('thumbnails-controls');
-  const thumbPrevBtn = $('<button>')
-    .addClass('thumbnail-control-btn prev')
-    .html('<i class="fa-solid fa-caret-left"></i>');
-  const thumbNextBtn = $('<button>')
-    .addClass('thumbnail-control-btn next')
-    .html('<i class="fa-solid fa-caret-right"></i>');
-  thumbControls.append(thumbPrevBtn, thumbNextBtn);
-
- let thumbnailsSlider = $('<div>').addClass('thumbnails thumbnails-slider');
-
-  for (let i = 0; i < dataObject.images.length; i++) {
-    let thumbnail = $('<div>').addClass('thumbnail');
-    const thumbnailImgSrc = 'images/' + dataObject.images[i];
-    const thumbnailImgElement = $('<img>').attr({
-      src: thumbnailImgSrc,
-      alt: 'Thumbnail ' + (i + 1),
-      class: 'thumbnail__img',
-    });
-    thumbnail.append(thumbnailImgElement);
-    thumbnailsSlider.append(thumbnail);
-  }
-
-  $('body').append(
-    titleElement,
-    sliderContainer.append(slider, sliderControls,  thumbContainer.append(thumbControls, thumbnailsSlider)),
-   
-  );
-
   let currentSlide = 0;
   let currentThumbnailSlide = 0;
 
-  $('.control-btn.next').on('click', nextSlide);
-  $('.control-btn.prev').on('click', prevSlide);
-  $('.thumbnail').on('click', function () {
-    const index = $(this).index();
-    goToSlide(index);
-  });
-  $('.thumbnail-control-btn.next').on('click', nextThumbnailSlide);
-  $('.thumbnail-control-btn.prev').on('click', prevThumbnailSlide);
-  $('.thumbnail').on('click', function () {
-    const index = $(this).index();
-    goToSlide(index);
-  });
+  initialize();
 
-  toggleActiveThumbClass(currentSlide);
+  function initialize() {
+    addElementsToBody();
+    attachEventHandlers();
+    toggleActiveThumbClass(currentSlide);
+  }
+
+  function addElementsToBody() {
+    $('body').append(createTitleElement(), createSlider());
+  }
+
+  function attachEventHandlers() {
+    attachControlBtnHandlers('.control-btn', nextSlide, prevSlide);
+    attachControlBtnHandlers('.thumbnail-control-btn', nextThumbnailSlide, prevThumbnailSlide);
+    attachHoverHandlers('.control-btn');
+    attachHoverHandlers('.thumbnail-control-btn');
+
+    $('.thumbnail').on('click', function () {
+      const index = $(this).index();
+      goToSlide(index);
+    });
+
+  }
+
+  function createTitleElement() {
+    return $('<h1>').text(dataObject.title);
+  }
+
+  function createSlider() {
+    let sliderContainer = $('<div>').attr('id', 'slider-container');
+    let slider = $('<div>').addClass('slider');
+
+    for (let i = 0; i < dataObject.images.length; i++) {
+      let slide = $('<div>').addClass('slide');
+      const imgSrc = 'images/' + dataObject.images[i];
+      const imgElement = $('<img>').attr({
+        src: imgSrc,
+        alt: 'Slide ' + (i + 1),
+      });
+      slide.append(imgElement);
+      slider.append(slide);
+    }
+
+    const sliderControls = createSliderControls();
+    const thumbnailsSlider = createThumbnailsSlider();
+    return sliderContainer.append(slider, sliderControls, thumbnailsSlider);
+  }
+
+  function createSliderControls() {
+    const sliderControls = $('<div>').addClass('slider-controls');
+    const prevBtn = createControlButton(
+      'prev',
+      '<i class="fa-solid fa-square-caret-left"></i>',
+    );
+    const nextBtn = createControlButton(
+      'next',
+      '<i class="fa-solid fa-square-caret-right"></i>',
+    );
+    return sliderControls.append(prevBtn, nextBtn);
+  }
+
+  function createControlButton(className, html) {
+    return $('<button>').addClass(`control-btn ${className}`).html(html);
+  }
+
+  function createThumbnailsSlider() {
+    let thumbContainer = $('<div>').addClass('thumb-container');
+    let thumbnailsSlider = $('<div>').addClass('thumbnails thumbnails-slider');
+
+    for (let i = 0; i < dataObject.images.length; i++) {
+      let thumbnail = $('<div>').addClass('thumbnail');
+      const thumbnailImgSrc = 'images/' + dataObject.images[i];
+      const thumbnailImgElement = $('<img>').attr({
+        src: thumbnailImgSrc,
+        alt: 'Thumbnail ' + (i + 1),
+        class: 'thumbnail__img',
+      });
+      thumbnail.append(thumbnailImgElement);
+      thumbnailsSlider.append(thumbnail);
+    }
+
+    const thumbControls = createThumbnailControls();
+    return thumbContainer.append(thumbControls, thumbnailsSlider);
+  }
+
+  function createThumbnailControls() {
+    const thumbControls = $('<div>').addClass('thumbnails-controls');
+    const thumbPrevBtn = createControlButton(
+      'thumbnail-control-btn prev',
+      '<i class="fa-solid fa-caret-left"></i>',
+    );
+    const thumbNextBtn = createControlButton(
+      'thumbnail-control-btn next',
+      '<i class="fa-solid fa-caret-right"></i>',
+    );
+    return thumbControls.append(thumbPrevBtn, thumbNextBtn);
+  }
 
   function showSlide(index) {
     const slider = $('.slider');
@@ -166,5 +196,21 @@ $(document).ready(function () {
   function prevThumbnailSlide() {
     currentThumbnailSlide--;
     showThumbnailSlide(currentThumbnailSlide);
+  }
+
+  function attachHoverHandlers(selector) {
+    $(selector).hover(
+      function () {
+        $(this).addClass('hovered');
+      },
+      function () {
+        $(this).removeClass('hovered');
+      },
+    );
+  }
+
+  function attachControlBtnHandlers(selector, nextHandler, prevHandler) {
+    $(`${selector}.next`).on('click', nextHandler);
+    $(`${selector}.prev`).on('click', prevHandler);
   }
 });
