@@ -1,27 +1,6 @@
+import {dataObject} from "./js/data.js";
+
 $(document).ready(function () {
-  const dataObject = {
-    title: 'Welcome to Kharkiv!!!',
-    images: [
-      '1.jpg',
-      '2.jpg',
-      '3.jpg',
-      '4.jpg',
-      '5.jpg',
-      '6.jpg',
-      '7.jpg',
-      '8.jpg',
-      '9.jpg',
-      '10.jpg',
-      '11.jpg',
-      '12.jpg',
-      '13.jpg',
-      '14.jpg',
-      '15.jpg',
-      '16.jpg',
-      '17.jpg',
-      '18.jpg',
-    ],
-  };
 
   let currentSlide = 0;
   let currentThumbnailSlide = 0;
@@ -69,12 +48,24 @@ $(document).ready(function () {
 
     for (let i = 0; i < dataObject.images.length; i++) {
       let slide = $('<div>').addClass('slide');
-      const imgSrc = 'images/' + dataObject.images[i];
+      const { src, name, link, address } = dataObject.images[i];
       const imgElement = $('<img>').attr({
-        src: imgSrc,
-        alt: 'Slide ' + (i + 1),
+        src: 'images/' + src,
+        alt: name,
       });
-      slide.append(imgElement);
+      const tooltip = $('<div>').addClass('slider__tooltip')
+          .html(`
+<strong>${name}</strong>
+<address>${address}</address>
+
+<span class="slider__locationWrap">
+<i class="fa-solid fa-location-dot"></i>
+<a href="${link}" class="slider__link" target="_blank">View on map</a>
+</span>
+
+
+`);
+      slide.append(imgElement, tooltip);
       slider.append(slide);
     }
 
@@ -104,19 +95,30 @@ $(document).ready(function () {
     let thumbContainer = $('<div>').addClass('thumb-container');
     let thumbnailsSlider = $('<div>').addClass('thumbnails thumbnails-slider');
 
+
     for (let i = 0; i < dataObject.images.length; i++) {
       let thumbnail = $('<div>').addClass('thumbnail');
-      const thumbnailImgSrc = 'images/' + dataObject.images[i];
+
+      const { src, name, link } = dataObject.images[i];
+
+      // Create the thumbnail image
+      const thumbnailImgSrc = 'images/' + src;
       const thumbnailImgElement = $('<img>').attr({
         src: thumbnailImgSrc,
         alt: 'Thumbnail ' + (i + 1),
         class: 'thumbnail__img',
       });
+
+
       thumbnail.append(thumbnailImgElement);
+
       thumbnailsSlider.append(thumbnail);
     }
 
+    // Create thumbnail controls
     const thumbControls = createThumbnailControls();
+
+    // Return the entire thumb container with controls and thumbnails
     return thumbContainer.append(thumbControls, thumbnailsSlider);
   }
 
