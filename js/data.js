@@ -9,31 +9,16 @@ export const dataObject = {
         { src: '6.jpg', name: 'Pivdennyy Vokzal Kharkiv', link: 'https://maps.app.goo.gl/hxAasiSPJL9WKQv27', address: 'Pryvokzal\'na Square, 1' },
         { src: '7.jpg', name: 'Assumption Cathedral', link: 'https://maps.app.goo.gl/xJvsmotuaei7okX49', address: 'Universytets\'ka St, 11' },
         { src: '8.jpg', name: 'Central Park', link: 'https://maps.app.goo.gl/vdZDRu9HiSDi4LHS8', address: 'Sumska St, 81' },
-
-
-
-
-
-        { src: '3.jpg', name: 'Shevchenko Park', link: 'https://maps.google.com?q=Shevchenko+Park+Kharkiv', address: 'Kharkiv, Shevchenko Park' },
-        { src: '4.jpg', name: 'Kharkiv National University', link: 'https://maps.google.com?q=Kharkiv+National+University', address: 'Kharkiv, Kharkiv National University' },
-        { src: '5.jpg', name: 'Kharkiv Zoo', link: 'https://maps.google.com?q=Kharkiv+Zoo', address: 'Kharkiv, Kharkiv Zoo' },
-        { src: '6.jpg', name: 'Pokrovsky Monastery', link: 'https://maps.google.com?q=Pokrovsky+Monastery+Kharkiv', address: 'Kharkiv, Pokrovsky Monastery' },
-
-
-
-
-        { src: '8.jpg', name: 'Mirror Stream', link: 'https://maps.google.com?q=Mirror+Stream+Kharkiv', address: 'Kharkiv, Mirror Stream' },
-        { src: '9.jpg', name: 'Ukrainian State Railway Museum', link: 'https://maps.google.com?q=Ukrainian+State+Railway+Museum+Kharkiv', address: 'Kharkiv, Ukrainian State Railway Museum' },
-        { src: '10.jpg', name: 'Vernadsky Boulevard', link: 'https://maps.google.com?q=Vernadsky+Boulevard+Kharkiv', address: 'Kharkiv, Vernadsky Boulevard' },
-        { src: '11.jpg', name: 'Metalist Stadium', link: 'https://maps.google.com?q=Metalist+Stadium+Kharkiv', address: 'Kharkiv, Metalist Stadium' },
-        { src: '12.jpg', name: 'Annunciation Cathedral', link: 'https://maps.google.com?q=Annunciation+Cathedral+Kharkiv', address: 'Kharkiv, Annunciation Cathedral' },
-
-        { src: '14.jpg', name: 'Sumska Street', link: 'https://maps.google.com?q=Sumska+Street+Kharkiv', address: 'Kharkiv, Sumska Street' },
-
-
-        { src: '17.jpg', name: 'Kharkiv Circus', link: 'https://maps.google.com?q=Kharkiv+Circus', address: 'Kharkiv, Kharkiv Circus' },
-        { src: '18.jpg', name: 'Derzhprom', link: 'https://maps.google.com?q=Derzhprom+Kharkiv', address: 'Kharkiv, Derzhprom' },
-        { src: '19.jpg', name: 'Skver Shevchenko', link: 'https://maps.google.com?q=Skver+Shevchenko+Kharkiv', address: 'Kharkiv, Skver Shevchenko' },
+        { src: '9.jpg', name: 'Ferris wheel', link: 'https://maps.app.goo.gl/oiC49eZXPZCP3g347', address: 'Vulytsya Dynamivsʹka, Kharkiv' },
+        { src: '10.jpg', name: 'Derzhprom', link: 'https://maps.app.goo.gl/jaGaGGHEWbKDouBY7', address: 'Svobody Square, 5' },
+        { src: '11.jpg', name: 'Metalist Stadium', link: 'https://maps.app.goo.gl/kBpRoGNdKvERQYBj8', address: 'Heorhiya Tarasenka St, 65' },
+        { src: '12.jpg', name: 'Khram Ikony Bozhoyi Materi "Vidrada I Vtikha"', link: 'https://maps.app.goo.gl/vHbER8VgtqX7r1M66', address: 'Irynynska St' },
+        { src: '13.jpg', name: 'Sarzhyn Yar', link: 'https://maps.app.goo.gl/xLXzHa47tAR92KcM8', address: 'Kharkiv, Sarzhyn Yar' },
+        { src: '14.jpg', name: 'Eiffel Tower', link: 'https://maps.app.goo.gl/bwayS8PwVfUdfTgw9', address: 'Akademika Pavlova St, 44-Б' },
+        { src: '15.jpg', name: 'Shevchenko Park', link: 'https://maps.app.goo.gl/N69C9VHKQ4Z1trKV8', address: 'Kharkiv,Shevchenko  Park' },
+        { src: '16.jpg', name: 'Mirror Stream', link: 'https://maps.google.com?q=Mirror+Stream+Kharkiv', address: 'Sumska St, 28/2' },
+        { src: '17.jpg', name: 'Kharkiv Zoo', link: 'https://maps.google.com?q=Kharkiv+Zoo', address: 'Sumska St, 35, Kharkiv' },
+        { src: '18.jpg', name: 'Kanatna Road', link: 'https://maps.app.goo.gl/4bQy2CcjQ7gAG3tM7', address: 'Sumska St, 81' },
 
     ],
 };
