@@ -1,19 +1,48 @@
 body {
   background-color: rgb(24, 23, 23);
+  background-image: url("./images/back.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 50px;
 }
 
 img {
   display: block;
   max-width: 100%;
+  border-radius: 15px;
+}
+
+.slider-wrap {
+  width: 1000px;
+  height:fit-content;
+  margin: 0 auto;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 h1 {
-  margin-bottom: 40px;
-  font-size: 60px;
+  margin:0;
+  font-size: 70px;
   text-align: center;
-  font-weight: 900;
-  color: white;
+  /*font-weight: 900;*/
+  color: #123D95;
+  font-family: "Permanent Marker", cursive;
+  font-weight: 400;
+  font-style: normal;
+  margin-bottom: 30px;
 }
+
+
 
 #slider-container {
   position: relative;
@@ -27,6 +56,7 @@ h1 {
 .slider {
   display: flex;
   transition: transform 0.5s ease-in-out;
+  border-radius: 15px;
 }
 
 .slide {
@@ -58,10 +88,12 @@ h1 {
   border: none;
   background-color: transparent;
   transition: all 300ms ease;
+
 }
 
 .control-btn.hovered {
-  color: rgb(218, 225, 18);
+  color:#30ACE9;
+
 }
 
 .thumbnails {
@@ -71,6 +103,7 @@ h1 {
 
   transition: transform 0.5s ease-in-out;
   padding-left: 40px;
+
 }
 
 .thumbnail {
@@ -78,6 +111,8 @@ h1 {
   width: 100px;
   min-width: 100px;
   cursor: pointer;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 .thumbnail__img {
@@ -92,7 +127,7 @@ h1 {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(179, 179, 179, 0.8);
+  background-color:  rgba(24, 86, 116, 0.8);
 }
 
 .thumbnails-controls {
@@ -101,6 +136,7 @@ h1 {
   width: 100%;
   display: flex;
   justify-content: space-between;
+
 }
 
 .thumbnail-control-btn {
@@ -110,15 +146,16 @@ h1 {
   width: 30px;
   font-size: 30px;
   padding: 0;
-  background-color: rgb(60, 57, 57);
-  color: white;
+  background-color: #ffffff;
+  color: #123D95;
   border: none;
+
   transition: all 0.5s ease-in-out;
 }
 
 .thumbnail-control-btn.hovered {
-  background-color: rgb(218, 225, 18);
-  color: rgb(60, 57, 57);
+  background-color:#123D95;
+  color:  #ffffff;
 }
 
 .thumb-container {

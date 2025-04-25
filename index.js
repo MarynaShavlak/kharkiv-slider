@@ -25,7 +25,7 @@ $(document).ready(function () {
 
   let currentSlide = 0;
   let currentThumbnailSlide = 0;
-  
+
 
   initialize();
 
@@ -36,7 +36,14 @@ $(document).ready(function () {
   }
 
   function addElementsToBody() {
-    $('body').append(createTitleElement(), createSlider());
+    const sliderWrap = $('<div>').addClass('slider-wrap');
+
+    const titleElement = createTitleElement();
+    const slider = createSlider();
+
+    sliderWrap.append(slider);
+
+    $('body').append(titleElement, sliderWrap);
   }
 
   function attachEventHandlers() {
@@ -192,7 +199,7 @@ $(document).ready(function () {
     showSlide(currentSlide);
     showThumbnailSlide(currentThumbnailSlide);
     toggleActiveThumbClass(currentThumbnailSlide);
-    
+
   }
 
   function prevThumbnailSlide() {
@@ -201,7 +208,7 @@ $(document).ready(function () {
     showSlide(currentSlide);
     showThumbnailSlide(currentThumbnailSlide);
     toggleActiveThumbClass(currentThumbnailSlide);
-    
+
   }
 
   function attachHoverHandlers(selector) {
